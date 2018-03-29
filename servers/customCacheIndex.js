@@ -28,8 +28,8 @@ app.get("/api/people", (req, res) => {
 
 // Should fire this on initial app load to have clean slate
 app.get("/api/clearcache", (req, res) => {
-  for (let key in obj) {
-    delete obj[key];
+  for (let key in cache) {
+    delete cache[key];
   }
   res.status(200).json({ message: "Cache Cleared" });
 });
