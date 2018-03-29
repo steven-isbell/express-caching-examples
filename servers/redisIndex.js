@@ -6,6 +6,8 @@ const port = 3001;
 
 const app = express();
 
+// This is not stored in Node Memory,
+// so the cache is preserved
 const client = redis.createClient();
 
 client.on("error", err => console.log("Error in Connection: ", err));
@@ -24,10 +26,7 @@ app.get("/api/people", (req, res) => {
             source: "Swapi"
           });
         })
-        .catch(err => {
-          console.log(err);
-          res.status(500).json(err);
-        });
+        .catch(err => res.status(500).json(err));
     }
   });
 });
